@@ -1,0 +1,28 @@
+function solution(A) {
+    // Implement your solution here
+
+    // console.log(A);
+
+    let uniqVal = new Set();
+    let max = 0;
+    for (let i=0; i<A.length; i++){
+        if (uniqVal.has(A[i])) return 0;
+        uniqVal.add(A[i]);
+        if (A[i] > max){
+            max = A[i];
+        }
+    }
+    // console.log(max, uniqVal, uniqVal.size);
+    
+    return uniqVal.size === max ? 1: 0
+
+    // let maxVal = Math.max(...A);
+    // // console.log(maxVal);
+    // let permSum  = maxVal*(maxVal+1)/2;
+    // let actualSum = A.reduce((a,b) => a+b,0);
+    // // console.log(permSum, actualSum);
+    // if (permSum == actualSum)
+    //     return 1;
+    // else 
+    //     return 0;
+}
