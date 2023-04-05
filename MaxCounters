@@ -1,0 +1,40 @@
+
+function solution(N, A) {
+    // Implement your solution here
+    for (let t = 0; t < A.length; t++) {
+    if (A[t] < 1 || A[t] > N + 1) {
+      throw new Error('Invalid input array A');
+    }
+  }
+  let lastMaxCounter = 0; // save the last max counter is applied to all counters
+  let counters = []; // counters result
+  // init values by 0
+  for (let i = 0; i < N; i++) {
+    counters[i] = 0;
+  }
+  let currentMaxCounter = 0; // save the current max counter each time any counter is increased
+  let maxApplied = false;
+  for (let j = 0; j < A.length; j++) {
+    const val = A[j];
+    if (1 <= val && val <= N) {
+      if (maxApplied && counters[val - 1] < lastMaxCounter) {
+        counters[val - 1] = lastMaxCounter;
+      }
+      counters[val - 1] = counters[val - 1] + 1;
+      if (currentMaxCounter < counters[val - 1]) {
+        currentMaxCounter = counters[val - 1];
+      }
+    } else if (val === N + 1) {
+      maxApplied = true;
+      lastMaxCounter = currentMaxCounter;
+    }
+  }
+//   console.log(counters)
+  // apply the lastMaxCounter to all counters
+  for (let k = 0; k < counters.length; k++) {
+    counters[k] = counters[k] < lastMaxCounter ? lastMaxCounter : counters[k];
+  }
+//   console.log(counters)
+
+  return counters;
+}
