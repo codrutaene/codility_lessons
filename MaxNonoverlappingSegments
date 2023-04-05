@@ -1,0 +1,16 @@
+function solution(A, B) {
+    // Implement your solution here
+    let N = A.length;
+    let response = N ? 1 : 0;
+    prevEnd = B[0];
+    for (let i=1; i<N; i++){
+        if (A[i] > prevEnd){
+            response++;
+            prevEnd = B[i];
+        }
+    }
+
+    // console.log(response);
+
+    return response;
+}
