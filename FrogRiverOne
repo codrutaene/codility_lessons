@@ -1,0 +1,30 @@
+function solution(X, A) {
+    // Implement your solution here
+    // console.log(X,A);
+
+    // let counts = {};//new Array(X).fill(0);
+    const counts = new Set();
+    // for (let i=1; i<=X; i++){
+    //     counts[i] = 0;
+    // }
+    // console.log(counts);
+
+    // if ()
+
+    for (let i=0; i< A.length; i++){
+        if (A[i] <= X)
+            counts.add(A[i]);
+        // let zeroElemPos = counts.findIndex()
+        // if ()
+        // console.log(Object.values(counts));
+        if (counts.size == X)
+            return i;
+        // let zeroElemPos = Object.values(counts).findIndex(el => el ==0);
+        // if (zeroElemPos == -1){
+        //     return i;
+        // }
+    }
+
+    return -1;
+
+}
